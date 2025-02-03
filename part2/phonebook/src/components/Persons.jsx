@@ -1,13 +1,15 @@
-const Persons = ({ persons }) => {
-  return (
-    <div>
-      {persons.map((person) => (
-        <div key={person.id}>
-          {person.name} {person.number}
-        </div>
-      ))}
-    </div>
-  );
-};
+const Person = ({ person }) => (
+  <div>
+    {person.name} {person.number}
+  </div>
+);
+
+const Persons = ({ persons }) => (
+  <div>
+    {persons.map((person) => (
+      <Person key={person.name} person={person} />
+    ))}
+  </div>
+);
 
 export default Persons;
