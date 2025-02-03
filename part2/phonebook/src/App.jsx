@@ -1,18 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
 
 const App = () => {
-  const [persons, setPersons] = useState([
-    { name: "Arto Hellas", number: "040-123456" },
-    { name: "Ada Lovelace", number: "39-44-5323523" },
-    { name: "Dan Abramov", number: "12-43-234345" },
-    { name: "Mary Poppendieck", number: "39-23-6423122" },
-  ]);
+  const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/persons")
+      .then((response) => {
+        setPersons(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   const addPerson = (event) => {
     event.preventDefault();
@@ -21,9 +28,17 @@ const App = () => {
       return;
     }
     const newPerson = { name: newName, number: newNumber };
-    setPersons(persons.concat(newPerson));
-    setNewName("");
-    setNewNumber("");
+
+    axios
+      .post("http://localhost:3001/persons", newPerson)
+      .then((response) => {
+        setPersons(persons.concat(response.data));
+        setNewName("");
+        setNewNumber("");
+      })
+      .catch((error) => {
+        console.error("Error adding person:", error);
+      });
   };
 
   const handleNameChange = (event) => setNewName(event.target.value);
