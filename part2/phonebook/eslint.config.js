@@ -35,5 +35,10 @@ export default [
       ],
       "react/prop-types": 0,
     },
+    eslintConfig: {
+      rules: {
+        "no-unused-vars": "off",
+      },
+    },
   },
 ];

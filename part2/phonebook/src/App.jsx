@@ -17,7 +17,7 @@ const App = () => {
         setPersons(initialPersons);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        alert("Failed to fetch data from server");
       });
   }, []);
 
@@ -43,9 +43,13 @@ const App = () => {
             );
             setNewName("");
             setNewNumber("");
+            alert(`Updated ${returnedPerson.name}'s number`);
           })
           .catch((error) => {
-            console.error("Error updating person:", error);
+            alert(
+              `Information of ${existingPerson.name} has already been removed from server`
+            );
+            setPersons(persons.filter((p) => p.id !== existingPerson.id));
           });
       }
       return;
@@ -62,9 +66,10 @@ const App = () => {
         setPersons(persons.concat(returnedPerson));
         setNewName("");
         setNewNumber("");
+        alert(`Added ${returnedPerson.name}`);
       })
       .catch((error) => {
-        console.error("Error adding person:", error);
+        alert("Failed to add person");
       });
   };
 
@@ -74,9 +79,11 @@ const App = () => {
         .remove(id)
         .then(() => {
           setPersons(persons.filter((person) => person.id !== id));
+          alert(`Deleted ${name}`);
         })
         .catch((error) => {
-          console.error("Error deleting person:", error);
+          alert(`Information of ${name} has already been removed from server`);
+          setPersons(persons.filter((p) => p.id !== id));
         });
     }
   };
