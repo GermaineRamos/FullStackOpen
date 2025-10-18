@@ -1,0 +1,10 @@
+Script started on 2025-10-18 08:41:17-04:00 [TERM="xterm-256color" TTY="/dev/pts/7" COLUMNS="120" LINES="30"]
+[?2004h]0;emphasis@Emphasis-PC: ~/FullStackOpen[01;32memphasis@Emphasis-PC[00m:[01;34m~/FullStackOpen[00m$ docker container run -it ubuntu bash
+[?2004l[?2004h]0;root@f0eaaf5ad33a: /root@f0eaaf5ad33a:/# mkdir /usr/src/app
+[?2004l[?2004h]0;root@f0eaaf5ad33a: /root@f0eaaf5ad33a:/# touch /usr/src/app/index.js
+[?2004l[?2004h]0;root@f0eaaf5ad33a: /root@f0eaaf5ad33a:/# [Kexit
+[?2004lexit
+[?2004h]0;emphasis@Emphasis-PC: ~/FullStackOpen[01;32memphasis@Emphasis-PC[00m:[01;34m~/FullStackOpen[00m$ exit
+[?2004lexit
+
+Script done on 2025-10-18 08:42:10-04:00 [COMMAND_EXIT_CODE="0"]
