@@ -1,0 +1,525 @@
+Script started on 2025-10-18 15:27:27-04:00 [TERM="xterm-256color" TTY="/dev/pts/8" COLUMNS="120" LINES="30"]
+[?2004h]0;emphasis@Emphasis-PC: ~/FullStackOpen/part12-containers-applications/todo-app/todo-backend[01;32memphasis@Emphasis-PC[00m:[01;34m~/FullStackOpen/part12-containers-applications/todo-app/todo-backend[00m$ touch Dockerfile
+[?2004l[?2004h]0;emphasis@Emphasis-PC: ~/FullStackOpen/part12-containers-applications/todo-app/todo-backend[01;32memphasis@Emphasis-PC[00m:[01;34m~/FullStackOpen/part12-containers-applications/todo-app/todo-backend[00m$ nano Dockerfile
+[?2004l[?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;54H(B[0;7m[ Reading... ](B[m[28;53H(B[0;7m[ Read 0 lines ](B[m[H(B[0;7m  GNU nano 7.2                                           Dockerfile                                                     [1;119H(B[m[29d(B[0;7m^G(B[m Help[29;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut[29;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location    (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Set Mark[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy[2d[?12l[?25h[?25l[1;69H(B[0;7m*[119G(B[m[?12l[?25h[2dF[?25l[?12l[?25hR[?25l[?12l[?25hO[?25l[?12l[?25hM[?25l[?12l[?25h [?25l[?12l[?25hn[?25l[?12l[?25ho[?25l[?12l[?25hd[?25l[?12l[?25he[?25l[?12l[?25h:[?25l[?12l[?25h2[?25l[?12l[?25h0[?25l[3d[?12l[?25h[?25l[4d[?12l[?25h[?25l[?12l[?25hW[?25l[?12l[?25hO[?25l[?12l[?25hR[?25l[?12l[?25hK[?25l[?12l[?25hD[?25l[28d[K[?12l[?25h[4;6HI[?25l[?12l[?25hR[?25l[?12l[?25h [?25l[?12l[?25h/[?25l[?12l[?25hu[?25l[?12l[?25hs[?25l[?12l[?25hr[?25l[?12l[?25h/[?25l[?12l[?25hs[?25l[?12l[?25hr[?25l[?12l[?25hc[?25l[?12l[?25h/[?25l[?12l[?25ha[?25l[?12l[?25hp[?25l[?12l[?25hp[?25l[5d[?12l[?25h[?25l[6d[?12l[?25h[?25l[?12l[?25hC[?25l[?12l[?25hO[?25l[?12l[?25hP[?25l[?12l[?25hY[?25l[?12l[?25h [?25l[?12l[?25h.[?25l[?12l[?25h [?25l[?12l[?25h.[?25l[7d[?12l[?25h[?25l[8d[?12l[?25h[?25l[?12l[?25hR[?25l[?12l[?25hU[?25l[?12l[?25hN[?25l[?12l[?25h [?25l[?12l[?25hc[?25l[?12l[?25hp[?25l[?12l[?25hm[?25l[?12l[?25h [?25l[?12l[?25hc[?25l[?12l[?25hi[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25hn[?25l[?12l[?25hp[?25l[?12l[?25hm[?25l[?12l[?25h [?25l[?12l[?25hc[?25l[?12l[?25hi[?25l[9d[?12l[?25h[?25l[10d[?12l[?25h[?25l[?12l[?25hU[?25l[?12l[?25hS[?25l[?12l[?25hE[?25l[?12l[?25hR[?25l[?12l[?25h [?25l[?12l[?25hn[?25l[?12l[?25ho[?25l[?12l[?25hd[?25l[?12l[?25he[?25l[11d[?12l[?25h[?25l[12d[?12l[?25h[?25l[13d[?12l[?25h[?25l[?12l[?25hC[?25l[?12l[?25hM[?25l[?12l[?25hD[?25l[?12l[?25h [?25l[?12l[?25hn[?25l[?12l[?25hp[?25l[?12l[?25hm[?25l[?12l[?25h [?25l[?12l[?25hs[?25l[?12l[?25ht[?25l[?12l[?25ha[?25l[?12l[?25hr[?25l[?12l[?25ht[?25l[?12l[?25h[A[?25l[11;28r[28;1H
+[1;30r[11;1H[?12l[?25h[?25l[?12l[?25h[A[?25l[9;28r[9;1HM[1;30r[11;1H[?12l[?25h[?25l[9;28r[9;1HM[1;30r[12;1H[?12l[?25h[?25l[?12l[?25h[A[?25l[?12l[?25h[A[?25l[?12l[?25hE[?25l[?12l[?25hN[?25l[?12l[?25hV[?25l[?12l[?25h [?25l[?12l[?25hD[?25l[?12l[?25hE[?25l[?12l[?25hB[?25l[?12l[?25hU[?25l[?12l[?25hG[?25l[?12l[?25h=[?25l[?12l[?25hp[?25l[?12l[?25hl[?25l[?12l[?25ha[?25l[?12l[?25hy[?25l[?12l[?25hg[?25l[?12l[?25hr[?25l[?12l[?25ho[?25l[?12l[?25hu[?25l[?12l[?25hn[?25l[?12l[?25hd[?25l[?12l[?25h:[?25l[?12l[?25h*[?25l[28d(B[0;7mSave modified buffer?                                                                                                   [29;1H Y(B[m Yes[K[30d(B[0;7m N(B[m No  [30;16H (B[0;7m^C(B[m Cancel[K[28;23H[?12l[?25h[?25l[29d(B[0;7m^G(B[m Help[29;31H(B[0;7mM-D(B[m DOS Format[29;61H(B[0;7mM-A(B[m Append[29;91H(B[0;7mM-B(B[m Backup File[30d(B[0;7m^C(B[m Cancel[17G[14X[30;31H(B[0;7mM-M(B[m Mac Format[30;61H(B[0;7mM-P(B[m Prepend[30;91H(B[0;7m^T(B[m Browse[28d(B[0;7mFile Name to Write: Dockerfile(B[m[?12l[?25h[?25l[28;53H[1K (B[0;7m[ Writing... ](B[m[K[1;69H(B[0;7m [119G(B[m[28;52H(B[0;7m[ Wrote 13 lines ](B[m[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l[?2004h]0;emphasis@Emphasis-PC: ~/FullStackOpen/part12-containers-applications/todo-app/todo-backend[01;32memphasis@Emphasis-PC[00m:[01;34m~/FullStackOpen/part12-containers-applications/todo-app/todo-backend[00m$ docker build -t todo-backend  .
+[?2004l[1A[1B[0G[?25l[+] Building 0.0s (0/1)                                                                                  docker:default
+[?25h[1A[0G[?25l[+] Building 0.1s (4/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m => [internal] load build context                                                                                  0.0s
+[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 0.3s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               0.2s
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 0.5s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               0.3s
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 0.6s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               0.5s
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 0.8s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               0.6s
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 0.9s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               0.7s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 1.0s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               0.9s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 1.2s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               1.0s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 1.3s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               1.2s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 1.5s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               1.3s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 1.6s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               1.5s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 1.8s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               1.6s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 1.9s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               1.8s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 2.1s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               1.9s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 2.2s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               2.1s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 2.4s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               2.2s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 2.5s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               2.4s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 2.7s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               2.5s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 2.8s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               2.7s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 3.0s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               2.8s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 3.1s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               3.0s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 3.3s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               3.1s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 3.4s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               3.3s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile The package-lock.json file was created with an old version of npm,                      
+[0m[2m => => # npm warn old lockfile so supplemental metadata must be fetched from the registry.                             
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 3.4s (7/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m => [4/4] RUN npm ci                                                                                               3.3s
+[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # npm warn old lockfile This is a one-time fix-up, please be patient...                                         
+[0m[2m => => # npm warn old lockfile                                                                                         
+[0m[2m => => # added 207 packages, and audited 208 packages in 3s                                                            
+[0m[2m => => # 14 packages are looking for funding                                                                           
+[0m[2m => => #   run `npm fund` for details                                                                                  
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 3.6s (8/8)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m[34m => [4/4] RUN npm ci                                                                                               3.4s
+[0m                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+[6A[0G[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 3.7s (8/9)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m[34m => [4/4] RUN npm ci                                                                                               3.4s
+[0m => exporting to image                                                                                             0.2s
+ => => exporting layers                                                                                            0.2s
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 3.9s (8/9)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m[34m => [4/4] RUN npm ci                                                                                               3.4s
+[0m => exporting to image                                                                                             0.3s
+ => => exporting layers                                                                                            0.3s
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 4.0s (8/9)                                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m[34m => [4/4] RUN npm ci                                                                                               3.4s
+[0m => exporting to image                                                                                             0.4s
+[34m => => exporting layers                                                                                            0.4s
+[0m[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Building 4.1s (9/9) FINISHED                                                                         docker:default
+[34m => [internal] load build definition from Dockerfile                                                               0.0s
+[0m[34m => => transferring dockerfile: 144B                                                                               0.0s
+[0m => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS si  0.0s
+[34m => [internal] load metadata for docker.io/library/node:20                                                         0.0s
+[0m[34m => [internal] load .dockerignore                                                                                  0.0s
+[0m[34m => => transferring context: 2B                                                                                    0.0s
+[0m[34m => [internal] load build context                                                                                  0.0s
+[0m[34m => => transferring context: 75.19kB                                                                               0.0s
+[0m[34m => [1/4] FROM docker.io/library/node:20                                                                           0.0s
+[0m[34m => CACHED [2/4] WORKDIR /usr/src/app                                                                              0.0s
+[0m[34m => [3/4] COPY . .                                                                                                 0.0s
+[0m[34m => [4/4] RUN npm ci                                                                                               3.4s
+[0m[34m => exporting to image                                                                                             0.4s
+[0m[34m => => exporting layers                                                                                            0.4s
+[0m[34m => => writing image sha256:45d7cd3c873ada2068157b8ee7fb976070dff4551b36b4bf618aec45d0770290                       0.0s
+[0m[34m => => naming to docker.io/library/todo-backend                                                                    0.0s
+[0m[?25h
+ [33m1 warning found (use docker --debug to expand):
+[0m - JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS signals (line 13)
+[?2004h]0;emphasis@Emphasis-PC: ~/FullStackOpen/part12-containers-applications/todo-app/todo-backend[01;32memphasis@Emphasis-PC[00m:[01;34m~/FullStackOpen/part12-containers-applications/todo-app/todo-backend[00m$ docker run -p 3000:3000 todo- backend
+[?2004l
+> todo-express-backend@0.0.0 start
+> node ./bin/www
+
+[0mGET / [32m200 [0m1.674 ms - 12[0m
+[0mGET /favicon.ico [33m404 [0m0.782 ms - 150[0m
+[0mGET / [32m200 [0m0.528 ms - 12[0m
+[?2004h]0;emphasis@Emphasis-PC: ~/FullStackOpen/part12-containers-applications/todo-app/todo-backend[01;32memphasis@Emphasis-PC[00m:[01;34m~/FullStackOpen/part12-containers-applications/todo-app/todo-backend[00m$ exit
+[?2004lexit
+
+Script done on 2025-10-18 15:32:22-04:00 [COMMAND_EXIT_CODE="137"]
