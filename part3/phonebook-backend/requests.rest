@@ -1,0 +1,42 @@
+### Test successful creation
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "number": "12-34-567890"
+}
+
+### Test missing name
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "number": "12-34-567890"
+}
+
+### Test missing number
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "John Doe"
+}
+
+### Test duplicate name
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "Arto Hellas",
+    "number": "12-34-567890"
+}
+
+### Test POST with logging
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "number": "12-34-567890"
+}
