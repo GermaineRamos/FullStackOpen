@@ -1,15 +1,15 @@
 db.createUser({
-  user: 'the_username',
-  pwd: 'the_password',
+  user: 'admin',
+  pwd: 'password',
   roles: [
     {
       role: 'dbOwner',
-      db: 'the_database',
+      db: 'todos',
     },
   ],
 });
 
-db.createCollection('todos');
+db = db.getSiblingDB('todos');
 
 db.todos.insert({ text: 'Write code', done: true });
-db.todos.insert({ text: 'Learn about containers', done: false router.get('/:id', async (req, res) => {
+db.todos.insert({ text: 'Learn about containers', done: false });
