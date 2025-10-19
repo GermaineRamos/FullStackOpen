@@ -1,0 +1,43 @@
+services:
+  app:
+    build:
+      context: ./frontend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./frontend:/usr/src/app
+    environment:
+      - VITE_BACKEND_URL=http://localhost:8080
+    container_name: my-app-frontend-dev
+
+  server:
+    build:
+      context: ./backend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./backend:/usr/src/app
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/myapp
+      - PORT=3001
+    depends_on:
+      - mongo
+    container_name: my-app-backend-dev
+
+  mongo:
+    image: mongo:6
+    volumes:
+      - mongo_data:/data/db
+    container_name: my-app-mongo-dev
+
+  nginx:
+    image: nginx:1.25-alpine
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8084:80
+    depends_on:
+      - app
+      - server
+    container_name: my-app-nginx-dev
+
+volumes:
+  mongo_data:
