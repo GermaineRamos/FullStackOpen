@@ -1,3 +1,6 @@
 [submodule "part12-containers-applications"]
 	path = part12-containers-applications
 	url = https://github.com/fullstack-hy2020/part12-containers-applications.git
+[submodule "pokedex"]
+	path = pokedex
+	url = https://github.com/GermaineRamos/full-stack-open-pokedex
